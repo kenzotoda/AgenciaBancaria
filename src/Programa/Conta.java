@@ -40,12 +40,13 @@ public class Conta {
         this.saldo = saldo;
     }
 
+    // método mágico que retorna uma representação textutal do objeto.
     public String toString() {
         return "\nNúmero da conta: " + this.getNumeroConta() +
                "\nNome: " + this.pessoa.getNome() +
                "\nCPF: " + this.pessoa.getCpf() +
-               "\nEmail" + this.pessoa.getEmail() +
-               "\nSaldo" + Utils.doubleToString(this.getSaldo()) +
+               "\nEmail: " + this.pessoa.getEmail() +
+               "\nSaldo: " + Utils.doubleToString(this.getSaldo()) +
                "\n";
     }
 

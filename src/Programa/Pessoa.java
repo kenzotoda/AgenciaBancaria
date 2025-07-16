@@ -39,6 +39,7 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
+    // método mágico que retorna uma representação textutal do objeto.
     public String toString() {
         return "\nNome: " + this.getNome() +
                "\nEmail: " + this.getEmail() +

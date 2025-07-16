@@ -43,7 +43,7 @@ public class AgenciaBancaria {
                 transferir();
                 break;
             case 5:
-                listar();
+                listarContas();
                 break;
             case 6:
                 System.out.println("Até mais, Obrigado!");
@@ -101,8 +101,63 @@ public class AgenciaBancaria {
         } else {
             System.out.println("Conta não encontrada!");
         }
+
+        operacoes();
     }
 
-    
+    public void sacar() {
+        System.out.println("Numero da conta: ");
+        int numeroConta = input.nextInt();
+
+        Conta conta = encontrarConta(numeroConta);
+
+        if (conta != null) {
+            System.out.println("Qual valor você deseja sacar?");
+            Double valorSaque = input.nextDouble();
+            conta.sacar(valorSaque);
+        } else {
+            System.out.println("Conta não encontrada!");
+        }
+
+        operacoes();
+    }
+
+    public void transferir() {
+        System.out.println("Número da conta do remetente: ");
+        int numeroContaRemetente = input.nextInt();
+
+        Conta contaRemetente = encontrarConta(numeroContaRemetente);
+
+        if (contaRemetente != null) {
+            System.out.println("Número da conta do destinatário: ");
+            int numeroContaDestinatario = input.nextInt();
+
+            Conta contaDestinatario = encontrarConta(numeroContaDestinatario);
+
+            if (contaDestinatario != null) {
+                System.out.println("Valor da transferência: ");
+                Double valorTransferencia = input.nextDouble();
+
+                contaRemetente.transferir(contaDestinatario, valorTransferencia);
+            } else {
+                System.out.println("Conta do destinatário não encontrada!");
+            }
+        } else {
+            System.out.println("Conta do remetente não encontrada!");
+        }
+
+        operacoes();
+    }
+
+    public void listarContas() {
+        if (contasBancarias.size() > 0) {
+            for (Conta conta : contasBancarias) {
+                System.out.println(conta);
+            }
+        } else {
+            System.out.println("Não há contas cadastradas!");
+        }
+        operacoes();
+    }
 
 }
